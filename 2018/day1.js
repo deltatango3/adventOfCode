@@ -998,12 +998,13 @@ let frequency = `+13
   -8
   +80339`;
 
-frequency = frequency.split(/\n/).map(each => {
-  return parseFloat(each.trim().split(" "));
-});
-
-total = frequency.reduce((a, b) => {
-  return a + b;
-});
+const total = frequency
+  .split(/\n/)
+  .map(each => {
+    return parseFloat(each.trim().split(" "));
+  })
+  .reduce((a, b) => {
+    return a + b;
+  });
 
 console.log(total);
