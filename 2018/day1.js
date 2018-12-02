@@ -998,13 +998,43 @@ let frequency = `+13
   -8
   +80339`;
 
-const total = frequency
-  .split(/\n/)
-  .map(each => {
-    return parseFloat(each.trim().split(" "));
-  })
-  .reduce((a, b) => {
-    return a + b;
-  });
+// Just Part One Answer
+// const total = frequency
+//   .split(/\n/)
+//   .map(each => {
+//     return parseFloat(each.trim().split(" "));
+//   })
+//   .reduce((a, b) => {
+//     return a + b;
+//   });
 
-console.log(total);
+// console.log(total);
+
+let all = [];
+let set = new Set();
+
+const total = frequency.split(/\n/).map(each => {
+  return parseFloat(each.trim().split(" "));
+});
+
+const findRepeat = () => {
+  let repeat = false;
+  let count = 0;
+
+  while (repeat === false) {
+    //count just to see how many times this needed to be run to get an answer
+    count++;
+    all.push(...total);
+    set = new Set();
+    all.reduce((a, b) => {
+      if (set.has(a + b)) {
+        console.log(a + b);
+        repeat = true;
+      } else {
+        set.add(a + b);
+      }
+      return a + b;
+    });
+  }
+  console.log(count);
+};
