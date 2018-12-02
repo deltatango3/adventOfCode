@@ -1011,7 +1011,6 @@ let frequency = `+13
 // console.log(total);
 
 let all = [];
-let set = new Set();
 
 const total = frequency.split(/\n/).map(each => {
   return parseFloat(each.trim().split(" "));
@@ -1025,7 +1024,7 @@ const findRepeat = () => {
     //count just to see how many times this needed to be run to get an answer
     count++;
     all.push(...total);
-    set = new Set();
+    let set = new Set();
     all.reduce((a, b) => {
       if (set.has(a + b)) {
         console.log(a + b);
